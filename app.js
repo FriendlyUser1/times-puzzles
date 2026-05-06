@@ -91,7 +91,7 @@ if (match.length > 0) {
 			const currentYear = new Date(Date.now()).getFullYear().toString();
 			if (!htmlDate.endsWith(currentYear)) htmlDate += ` ${currentYear}`;
 			const date = new Date(htmlDate);
-			const formattedDate = date.toLocaleDateString();
+			const formattedDate = date.toLocaleDateString('en-GB');
 			const fileSafeDate = getFileSafeDate(date);
 
 			if (db.data.puzzles.includes(fileSafeDate)) continue;
