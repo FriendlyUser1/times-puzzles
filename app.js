@@ -1,12 +1,10 @@
-import "dotenv/config";
-
 import { JSONFilePreset } from "lowdb/node";
 import axios from "axios";
 import { createWriteStream } from "fs";
 import path from "path";
 
 const PUZZLE_URL = "https://www.thetimes.com/puzzles/printable";
-const DOWNLOAD_PATH = process.env.PUZZLE_DIR;
+const DOWNLOAD_PATH = "/home/user/Documents/puzzles";
 const dbPath = new URL("puzzleScraperDatabase.json", import.meta.url).pathname;
 
 const defaultData = { puzzles: [] };
@@ -91,7 +89,7 @@ if (match.length > 0) {
 			const currentYear = new Date(Date.now()).getFullYear().toString();
 			if (!htmlDate.endsWith(currentYear)) htmlDate += ` ${currentYear}`;
 			const date = new Date(htmlDate);
-			const formattedDate = date.toLocaleDateString('en-GB');
+			const formattedDate = date.toLocaleDateString("en-GB");
 			const fileSafeDate = getFileSafeDate(date);
 
 			if (db.data.puzzles.includes(fileSafeDate)) continue;
