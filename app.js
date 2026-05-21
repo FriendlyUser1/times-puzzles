@@ -1,10 +1,12 @@
+import "dotenv/config";
+
 import { JSONFilePreset } from "lowdb/node";
 import axios from "axios";
 import { createWriteStream } from "fs";
 import path from "path";
 
 const PUZZLE_URL = "https://www.thetimes.com/puzzles/printable";
-const DOWNLOAD_PATH = "/home/user/Documents/puzzles";
+const DOWNLOAD_PATH = process.env.PUZZLE_DIR;
 const dbPath = new URL("puzzleScraperDatabase.json", import.meta.url).pathname;
 
 const defaultData = { puzzles: [] };
